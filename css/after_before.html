@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1::after{  /*after  before 必须有content，哪怕是‘空’*/
+            /*content: 'aaa';*/
+            content: '<h1>ads</h1>';/*出现字符串 而不是标签*/
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">div1</div>
+</body>
+</html>
