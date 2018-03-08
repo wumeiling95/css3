@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: red;
+            font-size: 16px;
+            transition: all 2s linear 2s;
+
+            transition-property:all;
+            transition-timing-function: linear;
+            transition-duration:2s;
+            transition-delay:2s;
+
+        }
+        #div1:hover{
+            width: 400px;
+            background: green;
+            font-size: 30px;
+        }
+        #div2{
+            width: 200px;
+            height: 200px;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">变化</button>
+    <div id="div1">哈哈哈哈</div>
+    <div id="div2"></div>
+    <script>
+        var oDiv1 =document.getElementById("div1");
+        var oBtn = document.getElementById("btn");
+        oBtn.onclick = function(){
+            oDiv1.style.width = '500px';
+
+        }
+    </script>
+</body>
+</html>

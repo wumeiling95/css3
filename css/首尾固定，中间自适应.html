@@ -3,8 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body,html,#container{
+            height:100%;
+        }
+        #container{
+            display:flex;
+            flex-direction:column;
+        }
+        #top{
+            height: 30px;
+            background: red;
+        }
+        #center{
+            flex-grow: 1;
+        }
+        #bottom{
+            height: 30px;
+            background: red;
+        }
+    </style>
 </head>
 <body>
-
+    <div id="container">
+        <div id="top"></div>
+        <div id="center"></div>
+        <div id="bottom"></div>
+    </div>
 </body>
 </html>

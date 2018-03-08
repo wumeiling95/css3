@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            height: 200px;
+            width: 200px;
+            background: #ff0000;
+
+            animation: xx 3s linear forwards 2s 2;
+        }
+        /*关键帧*/
+        @keyframes xx{
+            0%{
+                width: 300px;/*瞬间到300px在动画*/
+            }
+            50%{
+                width: 600px;
+            }
+            100%{
+                width: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin:0;
+            padding: 0;
+        }
+        #container{
+            position: relative;
+            margin: 200px auto;
+            width: 632px;
+            height: 340px;
+        }
+        #container img{
+            position: absolute;
+            top:0;
+            left:0;
+            border: 10px solid #cccccc;
+            box-shadow: 5px 5px 5px rgba(50,50,50,0.4);
+            transition: all 2s ease;
+        }
+        #container img:first-child{
+            transform: rotate(20deg);
+        }
+        #container img:last-child{
+            transform: rotate(-15deg);
+        }
+        #container img:hover{
+            z-index: 1;
+            box-shadow:5px 5px 5px 5px rgba(50,50,50,0.4);
+            transform: scale(1.5) rotate(0deg);/*覆盖了之前的倍数的transition，多个属性*/
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img src="../img/wpic.jpg" alt="">
+        <img src="../img/pic.jpg" alt="">
+    </div>
+</body>
+</html>
