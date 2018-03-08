@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*#div1{*/
+            /*width: 200px;*/
+            /*height: 200px;*/
+            /*background-color: red;*/
+            /*padding: 20px;*/
+            /*border: 20px solid black;*/
+            /*box-sizing:border-box;*/
+        /*}*/
+
+        /*四个元素在一行，等比例占用*/
+        /*3个的时候除不开的时候，需要用弹性盒模型*/
+        body{
+            margin:0;
+        }
+        #container{
+            display:-webkit-box;/*5个*/
+            /*padding: 0 100px;*/
+            /*border: 1px solid;*/
+        }
+        #container div{
+             height: 200px;
+            -webkit-box-flex: 1;/*5个*/
+            width: 0;
+            /*width:25%;*/
+            /*float: left;*/
+        }
+        #div1{
+            background-color:#ff0000;
+            /*margin-right: 100px;*/
+        }
+        #div2{
+            background-color:#00ff00;
+        }
+        #div3{
+            background-color:#0000ff;
+        }
+        #div4{
+            background-color:#ffff00;
+        }
+
+    </style>
+</head>
+<body>
+    <!--<div id="div1"></div>-->
+    <div id="container">
+        <div id="div1">
+            <h1>金黄色的花果山的故事</h1>
+        </div>
+        <div id="div2">
+            <h2>dsdsdsdsdvvddew</h2>
+        </div>
+        <div id="div3">
+            <h3>edssdfsdfdfsdfs</h3>
+        </div>
+        <div id="div4">
+            <h4>sfbhjsfhfhjd</h4>
+        </div>
+    </div>
+</body>
+</html>
