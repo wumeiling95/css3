@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            border: 1px dashed;
+            margin: 200px auto;
+            perspective: 1000px;/*远近  外层*/
+            perspective-origin: 50% 50%;/*默认，视角原点  x y*/
+        }
+        #div2{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            transform: rotateY(30deg);
+            transform-style:preserve-3d;/*中建*/
+            /*transform: rotateZ(30deg);*/
+            /*transform: rotate3d(30,30,0);!*三个参数，代表xyz？？？*!*/
+            /*transform:translateZ(-100px);!*放大缩小的效果*!*/
+        }
+        #div3{
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            transform: rotateY(30deg);
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <div id="div2">
+        <div id="div3"></div></div>
+    </div>
+</body>
+</html>
