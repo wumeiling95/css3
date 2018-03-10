@@ -5,18 +5,27 @@
     <title>Title</title>
     <style>
         #div2{
-            width: 400px;
-            height: 400px;
+            width: 200px;
+            height: 200px;
             background-color: #ff0000;
-            margin-top: 100px;
-            border: 1px solid #00ff00;
-            transform: scale(0.5);
-            transform-origin: 0 0;
+            position: relative;
+
+
+            /*width: 400px;*/
+            /*height: 400px;*/
+            /*background-color: #ff0000;*/
+            /*border: 1px solid #00ff00;*/
+            /*transform: scale(0.5);*/
+            /*transform-origin: 0 0;*/
         }
-        /*#div2::after{*/
-            /*content: '';*/
-            /**/
-        /*}*/
+        #div2::after{
+            content: '';
+            width:200%;
+            height:200%;
+            transform:scale(0.5) translate(-50%,-50%);
+            position: absolute;
+            border: 1px solid #00ff00;
+        }
     </style>
 </head>
 <body>
