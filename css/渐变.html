@@ -55,11 +55,11 @@
 
         oStart.onclick = function () {
             var timer = setInterval(function () {
-                if(oDiv4.offsetWidth == w){
+                if(oDiv4.offsetWidth >= w){
                     clearInterval(timer);
                 }else{
-                    oDiv4.style.width = oDiv4.offsetWidth + w /100 +'px';
-                    oDiv4.innerHTML = oDiv4.offsetWidth / w *100 +'%';
+                    oDiv4.style.width = oDiv4.offsetWidth + w / 100 +'px';
+                    oDiv4.innerHTML = oDiv4.offsetWidth / w * 100 +'%';
                 }
             },10)
         }
