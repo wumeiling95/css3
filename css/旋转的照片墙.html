@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html{
+            width:100%;
+            height:100%;
+        }
+        body{
+            margin:0;
+            padding:0;
+            width:100%;
+            height:100%;
+        }
+        li{
+            list-style-type: none;
+        }
+        #container{
+            width:100%;
+            height:100%;
+            background: url("../img/bg.jpg");
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        const ROW = 4,
+            COL = 6,
+            NUM = ROW * COL;
+        let oContainer = document.getElementById('container');
+        let count = 0;//表示加载成功的数量
+
+        for(let i=0;i<NUM;i++){
+//            let oImg = document.createElement('img');
+//            oImg.src = '../img/thumbs/'+(i +1)+'.jpg';
+//            oContainer.appendChild(oImg);
+
+            //图片预加载   懒加载
+            let oThumbsImg = new Img();
+            oThumbsImg.onload = function () {//预加载获取宽度，onload需要写在src的上面
+                count++;
+                if(count==NUM*2){
+                    loadSuccess();
+                }
+            }
+            oThumbsImg.src = '../img/thumbs/'+(i +1)+'.jpg';
+
+            let oBigImg = new Image();
+            oBigImg.onload = function () {
+                count++;
+                if(count==NUM*2){
+                    loadSuccess();
+                }
+
+            }
+            oBigImg.src = '../img/'+(i +1)+'.jpg'
+        }
+
+        function loadSuccess() {
+            //图片放到容器里
+
+        }
+        //加载函数
+//        window.onload = function () {
+//
+//        };
+
+
+    </script>
+</body>
+</html>
