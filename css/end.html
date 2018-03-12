@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+        }
+        #div1{
+            width: 100px;
+            height: 100px;
+            background-color: #ff0000;
+            position: relative;
+            left:0;
+            transition:left 2s ease;
+        }
+    </style>
+</head>
+<body>
+<button id="move">move</button>
+<div id="div1"></div>
+    <script>
+        var oMove = document.getElementById('move');
+        var oDiv1 = document.getElementById('div1');
+        oMove.onclick = function () {
+            oDiv1.style.left = '500px';
+        }
+        //知道动画是什么时候执行完成的   webkitAnimationEnd
+        oDiv1.addEventListener('webkitTransitionEnd',function () {
+            alert('end');
+        })
+    </script>
+</body>
+</html>

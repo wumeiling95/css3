@@ -21,6 +21,24 @@
             width:100%;
             height:100%;
             background: url("../img/bg.jpg");
+            position: relative;
+        }
+        #container .img{
+            cursor: pointer;
+            width: 125px;
+            height: 125px;
+            border:5px solid #ffffff;
+            box-shadow: 2px 2px 2px 2px rgba(0,0,0,.5);
+            position: absolute;
+            top: -500px;
+            left: -500px;
+            transition:all 1s ease;
+        }
+        #container .img span{
+            width:100%;
+            height: 100%;
+            opacity:0;
+            display: block;
         }
     </style>
 </head>
@@ -29,40 +47,96 @@
     <script>
         const ROW = 4,
             COL = 6,
-            NUM = ROW * COL;
-        let oContainer = document.getElementById('container');
-        let count = 0;//表示加载成功的数量
+            NUM = ROW * COL,
+            BIG_WIDTH = 750,
+            BIG_HEIGHT=500,
+            THUMB_HEIGHT=125,
+            THUMB_WIDTH=125;
+        var oContainer = document.getElementById('container');
+        var count = 0;//表示加载成功的数量
+        var aImg = null;
 
-        for(let i=0;i<NUM;i++){
+        for(var i=0;i<NUM;i++){
 //            let oImg = document.createElement('img');
 //            oImg.src = '../img/thumbs/'+(i +1)+'.jpg';
 //            oContainer.appendChild(oImg);
 
-            //图片预加载   懒加载
-            let oThumbsImg = new Img();
+            //图片预加载   懒加载-百度图片
+            var oThumbsImg = new Image();
             oThumbsImg.onload = function () {//预加载获取宽度，onload需要写在src的上面
                 count++;
-                if(count==NUM*2){
+                if(count == NUM * 2){
                     loadSuccess();
                 }
             }
             oThumbsImg.src = '../img/thumbs/'+(i +1)+'.jpg';
 
-            let oBigImg = new Image();
+            var oBigImg = new Image();
             oBigImg.onload = function () {
                 count++;
-                if(count==NUM*2){
+                if(count == NUM * 2){
                     loadSuccess();
                 }
-
             }
-            oBigImg.src = '../img/'+(i +1)+'.jpg'
+            oBigImg.src = '../img/'+(i +1)+'.jpg';
         }
-
         function loadSuccess() {
             //图片放到容器里
+            for(var i =0;i<NUM;i++){
+                for(var j=0;j<COL;j++) {
+                    var oDiv = document.createElement('div');
+                    oDiv.style.background = 'url(../img/thumbs/' + (i + 1) + '.jpg) no-repeat';
+                    oDiv.className = 'img';
+                    //js对象的使用
+                    oDiv.pos = {
+                        x : j,
+                        y : i
+                    };
+                    oDiv.innerHTML = '<span></span>';
+                    oContainer.appendChild(oDiv);
+                }
+            }
+            //计算图片间隙（水平  数值)
+            aImg = oContainer.getElementsByTagName('div');//24个div
+            var colGap = (oContainer.offsetWidth - aImg[0].offsetWidth * COL)/(COL + 1);//offsetwidth:内容，padding，border
+            var rowGap = (oContainer.offsetHeight - aImg[0].offsetHeight * ROW)/(ROW + 1);
 
+            //计算每个小图片的位置
+            for(var i= 0;i<NUM;i++){
+                aImg[i].style.transitionDelay = (NUM - i)*100 + 'ms'; //飞进来
+                aImg[i].style.transform = 'rotate('+ Math.floor(Math.random()* 40 - 20) +'deg)';//转角度
+                aImg[i].style.top = (rowGap + aImg[0].offsetHeight)*aImg[i].pos.y+ rowGap + 'px';
+                aImg[i].style.left  = (colGap + aImg[0].offsetWidth)*aImg[i].pos.x+ colGap  + 'px';
+            }
+
+            //大图片的间隙
+            var bigcolgap = (oContainer.offsetWidth - BIG_WIDTH)/2;
+            var bigrowgap = (oContainer.offsetHeight - BIG_HEIGHT)/2;
+
+
+            //绑定事件：利用事件委托给div绑定事件   事件放在加载外面，没有反应，因为顺序执行，图片可能加载没完成，aImg就是null
+            var bFlag = true; //标志位，true表示散开要合并 false相反
+            oContainer.onclick = function (e) {
+                 //console.log(aImg);   内外有区别  ？？？？？
+                //e.target 可能是e.target，div，span
+                if(e.currentTarget != e.target){
+                    if(bFlag){
+                        console.log("要合并");
+                        for(var i=0;i<NUM;i++){
+                            aImg[i].style.transitionDelay = '0ms';
+                            aImg[i].style.borderWidth = '1px';
+                            aImg[i].style.top = bigrowgap + THUMB_HEIGHT * aImg[i].pos.y+ 'px';
+                            aImg[i].style.left = bigcolgap + THUMB_WIDTH * aImg[i].pos.x+ 'px';
+                            aImg[i].style.transform = 'rotate(0deg)';//转角度
+                        }
+                    }else{
+                        console.log("要散开");
+                    }
+                }
+            }
         }
+
+
         //加载函数
 //        window.onload = function () {
 //
