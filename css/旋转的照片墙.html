@@ -92,6 +92,7 @@
                         x : j,
                         y : i
                     };
+                    oDiv.index = i * COL + j + 1;
                     oDiv.innerHTML = '<span></span>';
                     oContainer.appendChild(oDiv);
                 }
@@ -128,6 +129,10 @@
                             aImg[i].style.top = bigrowgap + THUMB_HEIGHT * aImg[i].pos.y+ 'px';
                             aImg[i].style.left = bigcolgap + THUMB_WIDTH * aImg[i].pos.x+ 'px';
                             aImg[i].style.transform = 'rotate(0deg)';//转角度
+
+                            var oSpan =aImg[i].getElementsByTagName('span')[0];
+                            oSpan.style.opacity = 1;
+                            oSpan.style.backgroundImage = 'url(../img/'+ (i+1) +'.jpg)'
                         }
                     }else{
                         console.log("要散开");
@@ -139,7 +144,6 @@
 
         //加载函数
 //        window.onload = function () {
-//
 //        };
 
 
